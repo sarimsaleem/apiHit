@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=
+    , initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    // fetch ka method then ke sath 
+
+
+    fetch('https://api.github.com/users/xiaotian/repos')
+
+      .then(resp => resp.json() // this returns a promise
+      ).then(repos => {
+        // for (const repo of repos) {
+        console.log(repos[0]);
+        // }
+      }).catch(ex => {
+        console.error(ex);
+      })
+
+    // ye async await se bhi hoo jaye ga 
+
+  </script>
+  <script>
+    async function fetchRepos() {
+      try {
+        const response = await fetch('https://api.github.com/users/xiaotian/repos');
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        const repos = await response.json();
+        console.log(repos[0]);
+      } catch (error) {
+        console.error('There was a problem with the fetch operation:', error);
+      }
+    }
+
+    fetchRepos();
+                                                          
+  </script>
+</body>
+</html>
